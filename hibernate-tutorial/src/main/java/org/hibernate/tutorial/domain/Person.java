@@ -3,7 +3,17 @@ package org.hibernate.tutorial.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "t_patient")
 public class Person {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private int age;
 	private String firstname;
@@ -63,15 +73,15 @@ public class Person {
 	public void setEmailAddresses(Set emailAddresses) {
 		this.emailAddresses = emailAddresses;
 	}
-	
-	public void addToEvent(Event event) {
-        this.getEvents().add(event);
-        event.getParticipants().add(this);
-    }
 
-    public void removeFromEvent(Event event) {
-        this.getEvents().remove(event);
-        event.getParticipants().remove(this);
-    }
+	public void addToEvent(Event event) {
+		this.getEvents().add(event);
+		event.getParticipants().add(this);
+	}
+
+	public void removeFromEvent(Event event) {
+		this.getEvents().remove(event);
+		event.getParticipants().remove(this);
+	}
 
 }

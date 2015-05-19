@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.cfg.Configuration;
 import org.hibernate.tutorial.domain.Event;
 import org.hibernate.tutorial.util.HibernateUtil;
+import org.hibernate.tutorial.util.TNamingStrategy;
 
 public class EventManagerServlet extends HttpServlet {
 
@@ -25,7 +27,7 @@ public class EventManagerServlet extends HttpServlet {
 		try {
 			// Begin unit of work
 			HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
-
+			
 			// Process request and render page...
 			// Write HTML header
 			PrintWriter out = response.getWriter();
